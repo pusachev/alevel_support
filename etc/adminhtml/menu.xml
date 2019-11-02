@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Pavel Usachev <webcodekeeper@hotmail.com>
+ * @copyright Copyright (c) 2017, Pavel Usachev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="ALevel_Support::all"
+                title="Alevel"
+                translate="title"
+                module="ALevel_Support"
+                sortOrder="20"
+                dependsOnModule="ALevel_Support"
+                resource="ALevel_Support::all"
+        />
+        <add
+                id="ALevel_Support::status_grid"
+                title="Status Grid"
+                translate="title"
+                module="ALevel_Support"
+                sortOrder="10"
+                parent="ALevel_Support::all"
+                action="alevel_support/status/index"
+                resource="ALevel_Support::status_grid"
+        />
+    </menu>
+</config>

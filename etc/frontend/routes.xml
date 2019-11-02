@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * routes.xml
+ *
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="alevel_support" frontName="support">
+            <module name="ALevel_Support"/>
+        </route>
+    </router>
+</config>

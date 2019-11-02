@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * di.xml
+ *
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="ALevel\Support\Api\Model\Data\StatusInterface"
+                type="ALevel\Support\Model\Status"/>
+    <preference for="ALevel\Support\Api\Model\Data\TicketInterface"
+                type="ALevel\Support\Model\Ticket"/>
+    <preference for="ALevel\Support\Api\Model\StatusRepositoryInterface"
+                type="ALevel\Support\Repository\StatusRepository"/>
+    <preference for="ALevel\Support\Api\Model\TicketRepositoryInterface"
+                type="ALevel\Support\Repository\TicketsRepository"/>
+    <preference for="ALevel\Support\Api\Model\Data\StatusSearchResultInterface"
+                type="Magento\Framework\Api\Search\SearchResult"/>
+    <preference for="ALevel\Support\Api\Model\Data\TicketSearchResultInterface"
+                type="Magento\Framework\Api\Search\SearchResult"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item
+                        name="status_grid_listing_data_source"
+                        xsi:type="string"
+                >ALevel\Support\Model\ResourceModel\Status\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
