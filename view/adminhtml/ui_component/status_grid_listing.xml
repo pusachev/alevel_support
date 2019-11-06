@@ -128,7 +128,7 @@
             </argument>
         </column>
 
-        <column name="status_label">
+        <column name="label" >
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="string">text</item>
@@ -138,13 +138,13 @@
             </argument>
         </column>
 
-<!--        <actionsColumn name="actions" class="Sysint\MagentoAcademy\UI\Component\Listing\Column\Actions">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="indexField" xsi:type="string">lesson_id</item>-->
-<!--                    <item name="sortOrder" xsi:type="number">200</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </actionsColumn>-->
+        <actionsColumn name="actions" class="ALevel\Support\Ui\Component\Listing\Column\Actions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">status_id</item>
+                    <item name="sortOrder" xsi:type="number">200</item>
+                </item>
+            </argument>
+        </actionsColumn>
     </columns>
 </listing>

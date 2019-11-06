@@ -8,10 +8,8 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
 
-
-class Index extends Action
+class Edit extends Action
 {
-
     /**
      * Execute action based on request and return result
      *
