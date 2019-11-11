@@ -23,7 +23,7 @@ class Status extends AbstractModel implements StatusInterface
         return $this;
     }
 
-    public function getStatus(): string
+    public function getStatusCode(): string
     {
         return $this->getData(StatusSchemaInterface::STATUS_CODE_COL_NAME);
     }

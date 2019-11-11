@@ -12,7 +12,7 @@ interface StatusInterface
 
     public function setStatusCode(string $code) : StatusInterface;
 
-    public function getStatus() : string;
+    public function getStatusCode() : string;
 
     public function setLabel(string $label) : StatusInterface;
 

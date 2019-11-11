@@ -32,4 +32,8 @@
             </argument>
         </arguments>
     </type>
+    <type name="ALevel\Support\Api\Model\Data\StatusInterface">
+        <plugin name="alevel_support_status_plugin"
+                type="ALevel\Support\Plugin\Model\StatusPlugin" />
+    </type>
 </config>
