@@ -12,5 +12,5 @@ interface TicketsSchemaInterface
     const MESSAGE_COL_NAME      = 'message';
     const CREATED_AT_COL_NAME   = 'created_at';
     const UPDATED_AT_COL_NAME   = 'updated_at';
-    const STATUS_COL_NAME       = 'status';
+    const STATUS_COL_NAME       = 'status_id';
 }

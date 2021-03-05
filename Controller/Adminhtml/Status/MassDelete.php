@@ -6,11 +6,12 @@
  */
 namespace ALevel\Support\Controller\Adminhtml\Status;
 
-/**
- * Class Delete
- * @package ALevel\Support\Controller\Adminhtml\Status
- */
-class Delete
+use Magento\Backend\App\Action;
+
+class MassDelete extends Action
 {
-    const ADMIN_RESOURCE = 'ALevel_Support::status_delete';
+    public function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

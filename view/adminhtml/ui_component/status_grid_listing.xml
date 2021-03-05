@@ -1,3 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * status_grid_listing.xml
+ *
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
+-->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
@@ -118,26 +128,26 @@
                 </item>
             </argument>
         </selectionsColumn>
-        <column name="status_code">
+        <column name="code">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="string">text</item>
                     <item name="filter" xsi:type="string">text</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
                     <item name="label" xsi:type="string" translate="true">Status Code</item>
                 </item>
             </argument>
         </column>
-
         <column name="label" >
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="string">text</item>
                     <item name="filter" xsi:type="string">text</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
                     <item name="label" xsi:type="string" translate="true">Status Label</item>
                 </item>
             </argument>
         </column>
-
         <actionsColumn name="actions" class="ALevel\Support\Ui\Component\Listing\Column\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

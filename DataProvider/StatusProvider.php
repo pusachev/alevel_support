@@ -1,16 +1,22 @@
 <?php
-
-
+/**
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
 namespace ALevel\Support\DataProvider;
 
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use ALevel\Support\Api\Model\Data\StatusInterface;
+use ALevel\Support\Model\ResourceModel\Status\Collection;
 use ALevel\Support\Model\ResourceModel\Status\CollectionFactory;
 
+/**
+ * Class StatusProvider
+ * @package ALevel\Support\DataProvider
+ */
 class StatusProvider extends AbstractDataProvider
 {
-    private $collectionFactory;
-
     /**
      * @param string $name
      * @param string $primaryFieldName
@@ -26,14 +32,13 @@ class StatusProvider extends AbstractDataProvider
         CollectionFactory $collectionFactory,
         array $meta = [],
         array $data = []
-    )
-    {
+    ) {
         $this->collection = $collectionFactory->create();
-        $this->collectionFactory = $collectionFactory;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
-    public function getData()
+    /** {@inheritDoc} */
+    public function getData() : array
     {
         if (isset($this->loadedData)) {
             return $this->loadedData;
@@ -51,14 +56,5 @@ class StatusProvider extends AbstractDataProvider
         }
 
         return $this->loadedData;
-    }
-
-    private function getStatusCollection()
-    {
-        if (null === $this->collection) {
-            $this->collection = $this->collectionFactory->create();
-        }
-
-        return $this->collection;
     }
 }

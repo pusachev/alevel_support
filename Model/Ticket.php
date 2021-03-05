@@ -1,6 +1,9 @@
 <?php
-
-
+/**
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
 namespace ALevel\Support\Model;
 
 use ALevel\Support\Api\Model\Data\StatusInterface;
@@ -15,10 +18,12 @@ use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Model\Context;
 
+/**
+ * Class Ticket
+ * @package ALevel\Support\Model
+ */
 class Ticket extends AbstractModel implements TicketInterface
 {
-    private $statusRepository;
-
     /**
      * @var StatusInterface
      */
@@ -29,6 +34,16 @@ class Ticket extends AbstractModel implements TicketInterface
      */
     private $timezone;
 
+    /**
+     * Ticket constructor.
+     *
+     * @param Context                    $context
+     * @param Registry                  $registry
+     * @param TimezoneInterface         $timezone
+     * @param AbstractResource|null     $resource
+     * @param AbstractDb|null           $resourceCollection
+     * @param array $data
+     */
     public function __construct(
         Context $context,
         Registry $registry,
@@ -41,11 +56,19 @@ class Ticket extends AbstractModel implements TicketInterface
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
+    /** {@inheritDoc} */
+    public function getId(): ?int
+    {
+        return parent::getId();
+    }
+
+    /** {@inheritDoc} */
     public function _construct()
     {
         $this->_init(ResourceModel::class);
     }
 
+    /** {@inheritDoc} */
     public function setFirstName(string $firstName): TicketInterface
     {
         $this->setData(TicketsSchemaInterface::FIRST_NAME_COL_NAME, $firstName);
@@ -53,11 +76,13 @@ class Ticket extends AbstractModel implements TicketInterface
         return $this;
     }
 
+    /** {@inheritDoc} */
     public function getFirstName(): string
     {
         return $this->getData(TicketsSchemaInterface::FIRST_NAME_COL_NAME);
     }
 
+    /** {@inheritDoc} */
     public function setLastName(string $lastName): TicketInterface
     {
         $this->setData(TicketsSchemaInterface::LAST_NAME_COL_NAME, $lastName);
@@ -65,11 +90,13 @@ class Ticket extends AbstractModel implements TicketInterface
         return $this;
     }
 
+    /** {@inheritDoc} */
     public function getLastName(): string
     {
         return $this->getData(TicketsSchemaInterface::LAST_NAME_COL_NAME);
     }
 
+    /** {@inheritDoc} */
     public function setMessage(string $message): TicketInterface
     {
         $this->setData(TicketsSchemaInterface::MESSAGE_COL_NAME, $message);
@@ -77,11 +104,13 @@ class Ticket extends AbstractModel implements TicketInterface
         return $this;
     }
 
+    /** {@inheritDoc} */
     public function getMessage(): string
     {
         return $this->getData(TicketsSchemaInterface::MESSAGE_COL_NAME);
     }
 
+    /** {@inheritDoc} */
     public function setStatus(StatusInterface $status): TicketInterface
     {
         if (null === $status->getId()) {
@@ -93,6 +122,7 @@ class Ticket extends AbstractModel implements TicketInterface
         return $this;
     }
 
+    /** {@inheritDoc} */
     public function getStatus(): StatusInterface
     {
         $statusId =  $this->getData(TicketsSchemaInterface::STATUS_COL_NAME);
@@ -104,17 +134,19 @@ class Ticket extends AbstractModel implements TicketInterface
         return $this->status;
     }
 
-    public function getCreatedAt(): \DateTimeInterface
+    /** {@inheritDoc} */
+    public function getCreatedAt(): string
     {
         $timestamp = $this->getData(TicketsSchemaInterface::CREATED_AT_COL_NAME);
 
-        return $this->timezone->date($timestamp);
+        return $this->timezone->date($timestamp)->format('Y-m-d H:i:s');
     }
 
-    public function getUpdatedAt(): \DateTimeInterface
+    /** {@inheritDoc} */
+    public function getUpdatedAt(): string
     {
         $timestamp = $this->getData(TicketsSchemaInterface::UPDATED_AT_COL_NAME);
 
-        return $this->timezone->date($timestamp);
+        return $this->timezone->date($timestamp)->format('Y-m-d H:i:s');
     }
 }

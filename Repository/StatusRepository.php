@@ -1,31 +1,46 @@
 <?php
-
+/**
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ */
 namespace ALevel\Support\Repository;
-
-use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Psr\Log\LoggerInterface;
 
 use ALevel\Support\Api\Model\Data\StatusInterface;
 use ALevel\Support\Api\Model\Data\StatusInterfaceFactory;
-use ALevel\Support\Api\Model\StatusRepositoryInterface;
-use ALevel\Support\Model\ResourceModel\Status as ResourceModel;
-use ALevel\Support\Model\ResourceModel\Status\Collection;
-use ALevel\Support\Model\ResourceModel\Status\CollectionFactory;
 use ALevel\Support\Api\Model\Data\StatusSearchResultInterface;
 use ALevel\Support\Api\Model\Data\StatusSearchResultInterfaceFactory;
 
-use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Data\SearchResultInterface;
+use ALevel\Support\Api\Model\StatusRepositoryInterface;
+use ALevel\Support\Model\ResourceModel\Status as ResourceModel;
+use ALevel\Support\Model\ResourceModel\Status\CollectionFactory;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Api\SearchCriteriaInterface;
 
+use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Psr\Log\LoggerInterface;
+
+/**
+ * Class StatusRepository
+ * @package ALevel\Support\Repository
+ */
 class StatusRepository implements StatusRepositoryInterface
 {
+    /**
+     * @var ResourceModel
+     */
     private $resourceModel;
 
+    /**
+     * @var StatusInterfaceFactory
+     */
     private $modelFactory;
 
+    /**
+     * @var CollectionFactory
+     */
     private $collectionFactory;
 
     /**
@@ -34,7 +49,7 @@ class StatusRepository implements StatusRepositoryInterface
     private $collectionProcessor;
 
     /**
-     * @var StatusSerachResultInterfaceFactory
+     * @var StatusSearchResultInterfaceFactory
      */
     private $searchResultFactory;
 
@@ -43,6 +58,16 @@ class StatusRepository implements StatusRepositoryInterface
      */
     private $logger;
 
+    /**
+     * StatusRepository constructor.
+     *
+     * @param ResourceModel                         $resourceModel
+     * @param StatusInterfaceFactory                $statusInterfaceFactory
+     * @param CollectionFactory                     $collectionFactory
+     * @param StatusSearchResultInterfaceFactory    $searchResultFactory
+     * @param CollectionProcessorInterface          $collectionProcessor
+     * @param LoggerInterface                       $logger
+     */
     public function __construct(
         ResourceModel $resourceModel,
         StatusInterfaceFactory $statusInterfaceFactory,
@@ -59,20 +84,22 @@ class StatusRepository implements StatusRepositoryInterface
         $this->logger               = $logger;
     }
 
+    /** {@inheritDoc} */
     public function getById(int $id): StatusInterface
     {
-         $model = $this->modelFactory->create();
+        $model = $this->modelFactory->create();
 
-         $this->resourceModel->load($model, $id);
+        $this->resourceModel->load($model, $id);
 
-         if (null === $model->getId()) {
-             throw new NoSuchEntityException(__('Model with %1 not found', $id));
-         }
+        if (null === $model->getId()) {
+            throw new NoSuchEntityException(__('Model with %1 not found', $id));
+        }
 
-         return $model;
+        return $model;
     }
 
-    public function getList(SearchCriteriaInterface $searchCriteria): SearchResultInterface
+    /** {@inheritDoc} */
+    public function getList(SearchCriteriaInterface $searchCriteria): StatusSearchResultInterface
     {
         $collection = $this->collectionFactory->create();
 

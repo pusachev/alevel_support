@@ -1,9 +1,9 @@
 <?php
 /**
- * Pavel Usachev <webcodekeeper@hotmail.com>
- * @copyright Copyright (c) 2018, Pavel Usachev
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-
 namespace ALevel\Support\Block\Adminhtml\Status\Edit;
 
 use Magento\Backend\Block\Widget\Context;
@@ -11,6 +11,10 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 use ALevel\Support\Api\Model\StatusRepositoryInterface;
 
+/**
+ * Class GenericButton
+ * @package ALevel\Support\Block\Adminhtml\Status\Edit
+ */
 class GenericButton
 {
     /** @var Context */
@@ -28,11 +32,11 @@ class GenericButton
     }
 
     /**
-     * Return Lesson ID
+     * Return Status ID
      *
      * @return int|null
      */
-    public function getStatusId()
+    public function getStatusId() : ?int
     {
         try {
             return $this->repository->getById(
@@ -50,7 +54,7 @@ class GenericButton
      * @param   array $params
      * @return  string
      */
-    public function getUrl($route = '', $params = [])
+    public function getUrl($route = '', $params = []) : string
     {
         return $this->context->getUrlBuilder()->getUrl($route, $params);
     }

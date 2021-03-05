@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <!--
 /**
- * @author Pavel Usachev <webcodekeeper@hotmail.com>
- * @copyright Copyright (c) 2017, Pavel Usachev
+ * acl.xml
+ *
+ * @author    Pavel Usachev <pausachev@gmail.com>
+ * @copyright 2019 Pavel Usachev
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -12,6 +15,8 @@
             <resource id="Magento_Backend::admin">
                 <resource id="ALevel_Support::all" title="ALevel_Support All" translate="title" sortOrder="30" >
                     <resource id="ALevel_Support::status_grid" title="Status grid" translate="title" sortOrder="10" />
+                    <resource id="ALevel_Support::status_edit" title="Status add/edit" translate="title" sortOrder="20" />
+                    <resource id="ALevel_Support::status_delete" title="Status delete" translate="title" sortOrder="30" />
                 </resource>
             </resource>
         </resources>

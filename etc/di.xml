@@ -25,15 +25,9 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item
-                        name="status_grid_listing_data_source"
-                        xsi:type="string"
-                >ALevel\Support\Model\ResourceModel\Status\Grid\Collection</item>
+                <item name="status_grid_listing_data_source"
+                      xsi:type="string">ALevel\Support\Model\ResourceModel\Status\Grid\Collection</item>
             </argument>
         </arguments>
-    </type>
-    <type name="ALevel\Support\Api\Model\Data\StatusInterface">
-        <plugin name="alevel_support_status_plugin"
-                type="ALevel\Support\Plugin\Model\StatusPlugin" />
     </type>
 </config>
